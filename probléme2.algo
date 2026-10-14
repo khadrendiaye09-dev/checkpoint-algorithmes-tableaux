@@ -1,0 +1,44 @@
+ALGORITHME Produit_Scalaire
+
+// Q1 : Procédure - ps en VAR (par référence), v1/v2/n en IN (par valeur)
+PROCEDURE dot_product(VAR ps : REEL; v1, v2 : TABLEAU DE REEL; n : ENTIER)
+VARIABLES i : ENTIER
+DEBUT
+    ps <- 0
+    POUR i DE 0 A n-1 FAIRE
+        ps <- ps + v1[i] * v2[i]
+    FINPOUR
+FIN
+
+// Q3 : Même chose en FONCTION
+FONCTION dot_product_fonc(v1, v2 : TABLEAU DE REEL; n : ENTIER) : REEL
+VARIABLES i : ENTIER; ps : REEL
+DEBUT
+    ps <- 0
+    POUR i DE 0 A n-1 FAIRE
+        ps <- ps + v1[i] * v2[i]
+    FINPOUR
+    RETOURNER ps
+FIN
+
+// Q2 : Algorithme principal avec boucle imbriquée
+VARIABLES
+    nb_paires, dim, k, i : ENTIER
+    vec1, vec2 : TABLEAU DE REEL
+    ps : REEL
+DEBUT
+    LIRE(nb_paires, dim)
+    POUR k DE 1 A nb_paires FAIRE
+        POUR i DE 0 A dim-1 FAIRE LIRE(vec1[i]) FINPOUR
+        POUR i DE 0 A dim-1 FAIRE LIRE(vec2[i]) FINPOUR
+
+        dot_product(ps, vec1, vec2, dim)
+        // Version fonction : ps <- dot_product_fonc(vec1, vec2, dim)
+
+        SI ps = 0 ALORS
+            ECRIRE("Paire ", k, " : orthogonaux")
+        SINON
+            ECRIRE("Paire ", k, " : non orthogonaux")
+        FINSI
+    FINPOUR
+FIN

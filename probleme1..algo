@@ -1,0 +1,32 @@
+ALGORITHME Somme_Distincts
+VARIABLES
+    T1, T2 : TABLEAU DE ENTIER
+    i, j, n1, n2, somme : ENTIER
+    trouve : BOOLEEN
+DEBUT
+    T1 <- [3, 1, 7, 9]
+    T2 <- [2, 4, 1, 9, 3]
+    n1 <- 4
+    n2 <- 5
+    somme <- 0
+
+    // T1 vs T2
+    POUR i DE 0 A n1-1 FAIRE
+        trouve <- FAUX
+        POUR j DE 0 A n2-1 FAIRE
+            SI T1[i] = T2[j] ALORS trouve <- VRAI FINSI
+        FINPOUR
+        SI NON trouve ALORS somme <- somme + T1[i] FINSI
+    FINPOUR
+
+    // T2 vs T1 - l'inverse demandé dans l'énoncé
+    POUR j DE 0 A n2-1 FAIRE
+        trouve <- FAUX
+        POUR i DE 0 A n1-1 FAIRE
+            SI T2[j] = T1[i] ALORS trouve <- VRAI FINSI
+        FINPOUR
+        SI NON trouve ALORS somme <- somme + T2[j] FINSI
+    FINPOUR
+
+    ECRIRE(somme)
+FIN
